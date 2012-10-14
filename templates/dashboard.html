@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Threepio</h1>
+<q>I really don't see how that is going to help! Surrender is a perfectly acceptable alternative in extreme circumstances!</q>
+<form action="{{ url_for('subscribe') }}" method="get">
+  <label for="key">
+    <b>Key</b> <input type="text" name="key" placeholder="e.g. /p/3b3xf">
+  </label>
+  <button type="submit">Subscribe</button>
+</form>
+
+{% for discussion in discussions %}
+  <article>
+    <dl>
+      <dt>Key</dt>
+      <dd><a href="{{ discussion.api_url }}" target="_blank">{{ discussion.key }}</a></dd>
+      <dt>URL</dt>
+      <dd><a href="{{ discussion.web_url }}" target="_blank">{{ discussion.web_url }}</a></dd>
+      <dt>Permalink</dt>
+      <dd><a href="{{ discussion.short_url }}" target="_blank">{{ discussion.short_url }}</a></dd>
+      <dt>Comments</dt>
+      <dd>{{ discussion.comments }}</dd>
+      <dt>Closed</dt>
+      <dd>{% if discussion.closed %}Yes{% else %}No{% endif %}</dd>
+      <dt>Last updated</dt>
+      <dd>{{ discussion.meta.last_updated }}</dd>
+  </article>
+{% endfor %}
+<article>
+  <h1><a href="http://gu.com/p/3b59k">Felix Baumgartner lands safely on Earth after record-breaking skydive</a></h1>
+  <a href="http://gu.com/p/3b59k">http://gu.com/p/3b59k</a> | <a href="">discussion</a> | <a href="">api</a>
+  <i>Last updated 3 minutes ago</i>
+  <p>1024 comments; 12 in the last 3 minutes; open for commenting</p>
+</article>
+{% endblock %}
