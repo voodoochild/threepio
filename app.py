@@ -8,7 +8,9 @@ app.secret_key = 'Artoo says that the chances of survival are 725 to 1'
 
 @app.route('/')
 def dashboard():
-	return ''
+	return ("I really don't see how that is going to help! "
+		"Surrender is a perfectly acceptable alternative in "
+		"extreme circumstances!")
 
 
 if __name__ == '__main__':
